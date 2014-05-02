@@ -122,6 +122,13 @@ if(!$user || !$user['uname']){
 
 
 <script>
+var url_base;
+var sub_url = 'http://127.0.0.1:8100/poll';
+var n = location.href.match(/^(http[s]?:\/\/[^\/]*)\//);
+if (n && n.length == 2) {
+	url_base = n[1] + '/chat';
+}
+
 function MessageBox(dom){
 	var self = this;
 	self.dom = $(dom);
@@ -175,18 +182,29 @@ function ContactList(dom){
 	self.dom = $(dom);
 	
 	self.onchange = null;
-		
-	self.show = function(contacts){
-		var html = '<ul>';
-		for(var i=0; i<contacts.length; i++){
-			var c = contacts[i];
-			html += '<li user="' + c.name + '">';
-			html += '<span>' + c.name + '</span>';
-			html += '<span class="unread" count="0" style="color: #f00;"></span>';
-			html += '</li>';
-		}
-		self.dom.html(html);
-			
+	
+	function make_html(user){
+		var html = '';
+		html += '<li user="' + user + '">';
+		html += '<span>' + user + '</span>';
+		html += '<span class="unread" count="0" style="color: #f00;"></span>';
+		html += '</li>';
+		return html;
+	}
+	
+	self.append = function(user){
+		var html = make_html(user);
+		self.dom.find('ul').append(html);
+		bind_event();
+	}
+	
+	self.prepend = function(user){
+		var html = make_html(user);
+		self.dom.find('ul').prepend(html);
+		bind_event();
+	}
+	
+	function bind_event(){
 		self.dom.find('li').click(function(){
 			self.dom.find('li').removeClass('on').css('background', 'none');
 			$(this).addClass('on').css('background', '#6cf');
@@ -196,11 +214,26 @@ function ContactList(dom){
 				self.onchange(uid2);
 			}
 		});
+	}
+		
+	self.show = function(contacts){
+		var html = '<ul>';
+		for(var i=0; i<contacts.length; i++){
+			var c = contacts[i];
+			html += make_html(c.name);
+		}
+		self.dom.html(html);
+		bind_event();
 		self.dom.find('li:first').click();
 	}
 	
 	self.onNewMessage = function(msg){
 		var li = self.dom.find('li[user=' + msg.from + ']');
+		if(li.length == 0){
+			// refresh recent contacts list
+			self.prepend(msg.from);
+			li = self.dom.find('li[user=' + msg.from + ']');
+		}
 		var c = li.find('.unread');
 		if(li.hasClass('on')){
 			c.attr('count', 0);
@@ -214,8 +247,6 @@ function ContactList(dom){
 		}
 	}
 }
-
-var url_base = 'http://127.0.0.1:8080/chat';
 
 $(function(){
 	msgBox = new MessageBox('#chat .messages');
@@ -287,7 +318,7 @@ $(function(){
 	var conf = {
 		channel: <?php echo json_encode($user['uname']); ?>,
 		signUrl: url_base + '/api/sign_comet.php',
-		subUrl: 'http://127.0.0.1:8100/poll',
+		subUrl: sub_url,
 		callback: function(content){
 			var msg = JSON.parse(content);
 			contactList.onNewMessage(msg);

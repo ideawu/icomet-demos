@@ -123,10 +123,13 @@ if(!$user || !$user['uname']){
 
 <script>
 var url_base;
-var sub_url = 'http://127.0.0.1:8100/poll';
+var sub_url;
 var n = location.href.match(/^(http[s]?:\/\/.*)\/[^\/]*/);
 if (n && n.length == 2) {
 	url_base = n[1];
+	n = location.href.match(/^http[s]?:\/\/([^\/]*)\//);
+	var ps = n[1].split(':');
+	sub_url = 'http://' + ps[0] + ':8100/poll'
 }
 
 function MessageBox(dom){

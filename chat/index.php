@@ -11,7 +11,6 @@ if(!$user || !$user['uname']){
 <style>
 #contacts{
 	float: left;
-	height: 300px;
 	border: 1px solid #66f;
 }
 #contacts .tabs{
@@ -25,6 +24,11 @@ if(!$user || !$user['uname']){
 	border: 1px solid #ccc;
 	cursor: pointer;
 	background: #eee;
+}
+#contacts .list{
+	overflow: auto;
+	height: 260px;
+	width: 100%;
 }
 #contacts .list li:hover{
 	cursor: pointer;

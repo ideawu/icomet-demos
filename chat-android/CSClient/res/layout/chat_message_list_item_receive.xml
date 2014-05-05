@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="60dp"
+        android:minWidth="100dp"
+        android:background="@drawable/chat_message_receive_bg"
+        android:padding="10dp" >
+
+        <!--
+        <TextView
+            android:id="@+id/chat_message_list_item_receive_time"
+            style="@style/ChatMessageThemeDefaultReceiveTime" 
+            android:layout_alignParentRight="true"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/chat_message_list_item_receive_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@id/chat_message_list_item_receive_time"
+            android:background="@drawable/chat_message_receive_divider" />
+        -->
+
+        <TextView
+            android:id="@+id/chat_message_list_item_content"
+            style="@style/ChatMessageThemeDefaultReceiveContent"
+            android:layout_marginTop="10dp"
+            android:text="ddddd" />
+    </RelativeLayout>
+
+</LinearLayout>

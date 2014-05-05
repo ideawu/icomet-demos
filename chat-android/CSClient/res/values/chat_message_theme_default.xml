@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="ChatMessageThemeDefaultReceiveBase">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="ChatMessageThemeDefaultReceiveTime" parent="ChatMessageThemeDefaultReceiveBase">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    
+    <style name="ChatMessageThemeDefaultReceiveContent" parent="ChatMessageThemeDefaultReceiveBase">
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    
+    <style name="ChatMessageThemeDefaultSendBase">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#222222</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="ChatMessageThemeDefaultSendContent" parent="ChatMessageThemeDefaultSendBase">
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+</resources>

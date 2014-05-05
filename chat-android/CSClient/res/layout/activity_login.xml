@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#28a2e8"
+    tools:context="com.kyleduo.csclient.a.LoginActivity" >
+
+
+    <EditText
+        android:id="@+id/login_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="125dp"
+        android:background="#DDFFFFFF"
+        android:gravity="center"
+        android:minWidth="200dp"
+        android:ellipsize="middle"
+        android:textColor="#535353"
+        android:padding="8dp"
+        android:hint="Input your name"
+        android:singleLine="true"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/login_submit_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Login"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/login_bt_selector"
+        android:textColor="#FFFFFF"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold|italic"
+        android:text="CSClient" />
+
+</RelativeLayout>

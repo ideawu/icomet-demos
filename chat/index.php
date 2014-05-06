@@ -103,6 +103,8 @@ if(!$user || !$user['uname']){
 }
 </style>
 
+<p>Download the <a href="https://github.com/ideawu/icomet-demos/blob/master/chat-android/CSClient.apk?raw=true" target="_blank">Android APK</a>.</p>
+
 <div id="contacts">
 	<div class="tabs">
 		<span class="all">All</span>

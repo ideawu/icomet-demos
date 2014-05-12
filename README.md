@@ -3,6 +3,8 @@ icomet-demos
 
 ## Web Chat
 
+[Demo web chat](http://www.ideawu.com/icomet/chat/)
+
 ![](chat/img/web-chat.png)
 
 ## Android App Chat

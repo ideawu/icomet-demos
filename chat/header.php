@@ -22,6 +22,7 @@
 	}
 	</style>
 	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.qrcode.min.js"></script>
 	<script src="js/icomet.js"></script>
 	<script src="js/json2.js"></script>
 </head>

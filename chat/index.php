@@ -103,8 +103,6 @@ if(!$user || !$user['uname']){
 }
 </style>
 
-<p>Download the <a href="https://github.com/ideawu/icomet-demos/blob/master/chat-android/CSClient.apk?raw=true" target="_blank">Android APK</a>.</p>
-
 <div id="contacts">
 	<div class="tabs">
 		<span class="all">All</span>
@@ -125,6 +123,23 @@ if(!$user || !$user['uname']){
 		<button class="send">Send</button>
 	</div>
 </div>
+
+<div style="float: left; margin-left: 20px;">
+	<p>Download <a href="https://github.com/ideawu/icomet-demos/blob/master/chat-android/CSClient.apk?raw=true" target="_blank">Android APK</a>.</p>
+	<div id="qrcode">
+	</div>
+</div>
+
+<script>
+$(function(){
+	$('#qrcode').qrcode({
+		width	: 150,
+		height	: 150,
+		text	: "https://github.com/ideawu/icomet-demos/blob/master/chat-android/CSClient.apk?raw=true"
+	});	
+});
+</script>
+
 
 
 <script>

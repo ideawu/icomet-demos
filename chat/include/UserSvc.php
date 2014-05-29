@@ -35,8 +35,8 @@ class UserSvc
 	//}
 	
 	function listUsers(){
-		$uids = $this->ssdb->zkeys('all_users', '', '', '', 50);
-		$uids = array_reverse($uids);
+		$uids = $this->ssdb->zrscan('all_users', '', '', '', 50);
+		$uids = array_keys($uids);
 		return $uids;
 	}
 	

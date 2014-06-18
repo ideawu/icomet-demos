@@ -252,6 +252,7 @@ function ContactList(dom){
 	}
 	
 	self.onNewMessage = function(msg){
+		// 消息只显示在对应的聊天窗口
 		var li = self.dom.find('li[user=' + msg.from + ']');
 		if(li.length == 0){
 			// refresh recent contacts list
@@ -276,6 +277,7 @@ $(function(){
 	msgBox = new MessageBox('#chat .messages');
 	contactList = new ContactList('#contacts .list');
 	
+	// 当激活聊天窗口时, 从持久化存储中(而不是从 icomet 的缓存队列中)获取历史消息
 	contactList.onchange = function(uid2){
 		$('#chat .talkwith .user').html(uid2);
 		var url = url_base + '/api/messages.php';
@@ -285,6 +287,8 @@ $(function(){
 			msgBox.show(resp.data);
 		});
 	}
+
+	// TODO: load unread messages on init
 
 	$('#contacts .tabs span').click(function(){
 		$('#contacts .tabs span').css('background', '#ddd');

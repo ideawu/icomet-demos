@@ -1,13 +1,16 @@
 <?php
+require_once(dirname(__FILE__) . '/include/UserSvc.php');
+$uc = new UserSvc();
+if($_GET['act'] == 'logout'){
+	$uc->logout();
+}
 $errmsg = '';
 if($_POST){
-	require_once(dirname(__FILE__) . '/include/UserSvc.php');
 	$uname = trim($_POST['uname']);
 	if(!preg_match('/^[0-9a-z_]+$/i', $uname)){
 		$errmsg = 'bad user name!';
 	}
 	if(!$errmsg){
-		$uc = new UserSvc();
 		$uc->login($uname, '');
 		header('Location: ./');
 		die();

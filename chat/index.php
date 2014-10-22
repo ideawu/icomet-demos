@@ -27,7 +27,7 @@ if(!$user || !$user['uname']){
 }
 #contacts .list{
 	overflow: auto;
-	height: 260px;
+	height: 300px;
 	width: 100%;
 }
 #contacts .list li:hover{
@@ -114,8 +114,9 @@ if(!$user || !$user['uname']){
 
 <div id="chat">
 	<div class="talkwith">
-		<b><?php echo $user['uname'];?></b>
-		Chat with <span class="user">abc</span>:
+		Logged in as <b><?php echo $user['uname'];?></b>, <a href="login.php?act=logout">logout</a>
+		<br/>
+		chat with <span class="user">abc</span>:
 	</div>
 	<div class="messages_div"><div class="messages"></div></div>
 	<div class="widget">

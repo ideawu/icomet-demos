@@ -27,7 +27,7 @@ if(!$user || !$user['uname']){
 }
 #contacts .list{
 	overflow: auto;
-	height: 300px;
+	height: 400px;
 	width: 100%;
 }
 #contacts .list li:hover{
@@ -47,7 +47,7 @@ if(!$user || !$user['uname']){
 #chat .messages_div{
 	margin-top: 6px;
 	width: 462px;
-	height: 220px;
+	height: 320px;
 	border: 1px solid #999;
 	overflow: auto;
 }

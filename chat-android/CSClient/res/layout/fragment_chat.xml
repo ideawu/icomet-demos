@@ -24,7 +24,9 @@
             android:layout_gravity="bottom"
             android:layout_weight="100"
             android:gravity="top"
-            android:maxLines="5" />
+            android:maxLines="5">
+            <requestFocus />
+        </EditText>
 
         <LinearLayout
             android:layout_width="wrap_content"

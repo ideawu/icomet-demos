@@ -1,5 +1,7 @@
 package com.kyleduo.csclient.comet;
 
+import java.lang.reflect.Field;
+
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
@@ -59,6 +61,20 @@ public class ICometService extends Service {
 
 	public ICometService() {
 		mClient = ICometClient.getInstance();
+		// for reconnect test
+		try {
+			Field declaredField = mClient.getClass().getDeclaredField("DELAY");
+			if (declaredField != null) {
+				declaredField.setAccessible(true);
+				try {
+					declaredField.set(mClient, new int[]{3, 5, 10});
+				} catch (IllegalAccessException | IllegalArgumentException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -137,12 +153,15 @@ public class ICometService extends Service {
 
 		@Override
 		public boolean onReconnect(int arg0) {
-			return true;
+			// return true to interrupt reconnecting, false for infinite reconnection
+			log("reconnect, times: " + arg0);
+			return false;
 		}
 
 		@Override
 		public void onReconnectSuccess(int arg0) {
-			log("reconnect, times: " + arg0);
+			log("reconnect success, times: " + arg0);
+			mClient.comet();
 		}
 
 		@Override

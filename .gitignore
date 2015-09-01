@@ -2,3 +2,4 @@
 docs
 *.swp
 *.pyc
+*.class

@@ -274,6 +274,38 @@ function ContactList(dom){
 	}
 }
 
+$(window).on("blur focus", function (e) {
+	var prevType = $(this).data("prevType");
+	if (prevType != e.type) { //  reduce double fire issues
+		switch (e.type) {
+		case "blur":
+			$(window).data('isTabOpen', 0);
+			break;
+		case "focus":
+			$(window).data('isTabOpen', 1);
+			break;
+		}
+	}
+	$(this).data("prevType", e.type);
+});
+
+function flash_title(initial, to) {
+	document.title = (document.title == initial)? to : initial;
+	if ($(window).data('isTabOpen') == 1) {
+		document.title = initial;
+		return 0;
+	}
+	setTimeout(function () {
+		flash_title(initial, to)
+	}, 500);
+}
+
+function flash_title_with_prefix(prefix){
+	var title = document.title;
+	title = title.replace(prefix, '');
+	flash_title(title, prefix + title);
+}
+
 $(function(){
 	msgBox = new MessageBox('#chat .messages');
 	contactList = new ContactList('#contacts .list');
@@ -351,6 +383,7 @@ $(function(){
 		callback: function(content){
 			var msg = JSON.parse(content);
 			contactList.onNewMessage(msg);
+			flash_title_with_prefix('(*new*)');
 		}
 	};
 	comet = new iComet(conf);

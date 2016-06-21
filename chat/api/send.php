@@ -30,9 +30,8 @@ if(!strlen($uid2) || strlen($uid2) > 32 || !strlen($text)){
 	$svc = new ChatSvc();
 	$msg = $svc->send($uid, $uid2, $text);
 	
-	$comet_msg = $msg;
-	$comet_msg['time'] = date('Y-m-d H:i:s', $comet_msg['time']);
-	comet_push($uid2, json_encode($comet_msg));
+	$msg['time'] = date('Y-m-d H:i:s', $msg['time']);
+	comet_push($uid2, json_encode($msg));
 	
 	$resp['data'] = $msg;
 }

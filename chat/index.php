@@ -255,18 +255,18 @@ function ContactList(dom){
 	self.onNewMessage = function(msg){
 		// 消息只显示在对应的聊天窗口
 		var li = self.dom.find('li[user=' + msg.from + ']');
-		if(li.length == 0){
-			// refresh recent contacts list
-			self.prepend(msg.from);
-			li = self.dom.find('li[user=' + msg.from + ']');
-		}
-		var c = li.find('.unread');
 		if(li.hasClass('on')){
+			var c = li.find('.unread');
 			c.attr('count', 0);
 			c.html('');
 			//
 			msgBox.append(msg);
 		}else{
+			li.remove();
+
+			self.prepend(msg.from);
+			li = self.dom.find('li[user=' + msg.from + ']');
+			var c = li.find('.unread');
 			var count = parseInt(c.attr('count')) + 1;
 			c.attr('count', count);
 			c.html('(' + count + ')');
